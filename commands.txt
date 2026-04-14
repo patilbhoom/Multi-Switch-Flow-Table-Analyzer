@@ -1,0 +1,13 @@
+# Start controller
+cd ~/Desktop/pox
+./pox.py openflow.of_01 forwarding.l2_learning
+
+# Start Mininet
+sudo mn --topo single,3 --controller remote
+
+# Generate traffic
+pingall
+h1 ping h2
+
+# Check flow table
+sudo ovs-ofctl dump-flows s1
